@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//React
+import { useState } from "react";
 
-function App() {
+//Styles
+import { GlobalStyle } from "./styles/global";
+
+//Components
+import { SearchInput } from "./components/SearchInput/index";
+import { CharactersContainer } from "./components/CharactersContainer/index";
+
+//Context
+import { FavoriteCharactersProvider } from "./contexts/Characters/FavoriteCharacters";
+
+export function App() {
+  const [searchedCharacter, setSearchedCharacter] = useState<string>("");
+
+  function handleCharacterSearch(characterNameInput: string) {
+    setSearchedCharacter(characterNameInput);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <FavoriteCharactersProvider>
+        <h1>Characters Rick and Morty</h1>
+        <h2>Type a Character name to know more about it</h2>
+        <SearchInput onInputChange={handleCharacterSearch} />
+        <CharactersContainer searchedCharacter={searchedCharacter} />
+      </FavoriteCharactersProvider>
+    </>
   );
 }
 

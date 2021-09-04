@@ -1,0 +1,30 @@
+//React
+import { ChangeEvent } from "react";
+
+//Services
+import { getNewId } from "../../services/id";
+
+//Types
+import { ISearchInputProps } from "../../@Types/SearchInput";
+
+const inputID = getNewId();
+
+export function SearchInput({ onInputChange }: ISearchInputProps) {
+  function handleInputChange({ currentTarget }: ChangeEvent<HTMLInputElement>) {
+    if (onInputChange) {
+      onInputChange(currentTarget.value);
+    }
+  }
+
+  return (
+    <div>
+      <label htmlFor={inputID}></label>
+      <input
+        id={inputID}
+        type="text"
+        placeholder="Search"
+        onChange={handleInputChange}
+      ></input>
+    </div>
+  );
+}
