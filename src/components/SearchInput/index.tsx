@@ -7,6 +7,9 @@ import { getNewId } from "../../services/id";
 //Types
 import { ISearchInputProps } from "../../@Types/SearchInput";
 
+//Styles
+import { SearchInputContainer } from "./styles";
+
 const inputID = getNewId();
 
 export function SearchInput({ onInputChange }: ISearchInputProps) {
@@ -17,14 +20,14 @@ export function SearchInput({ onInputChange }: ISearchInputProps) {
   }
 
   return (
-    <div>
+    <SearchInputContainer>
       <label htmlFor={inputID}></label>
       <input
         id={inputID}
         type="text"
-        placeholder="Search"
+        placeholder="Character's name"
         onChange={handleInputChange}
-      ></input>
-    </div>
+      />
+    </SearchInputContainer>
   );
 }

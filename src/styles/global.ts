@@ -4,11 +4,11 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root { 
-  --background: #121214;
-  --shape: #202024;
-  --primary: #33cc95;
+  --background: #5a1d7d;
+  --shape: #28282d;
+  --primary: #64208b;
   --secondary: #9E59AF;
-  --text-title: #81FF5C;
+  --text-title: #01C49A;
   --text-body: #ffffff;
 }
 
@@ -30,8 +30,8 @@ html {
 }
 
 body { 
-  /* background: var(--background); */
-  /* color: var(--text-body); */
+  background: var(--background);
+  color: var(--text-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -46,6 +46,14 @@ h1,h2,h3,h4,h5,h6, strong {
 
 button { 
   cursor: pointer;
+}
+
+ul { 
+  list-style: none;
+}
+
+a { 
+  text-decoration: none
 }
 
 [disabled] {
@@ -64,5 +72,49 @@ button {
 ::-webkit-scrollbar-thumb {
   border-radius: 2rem;
   background: var(--primary);
+}
+
+.menu__tablist { 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, .3);
+
+  @media (max-width: 768px) { 
+    display: flex;
+    flex-direction: column;
+  }
+
+  picture { 
+    display: block;
+    margin: 1rem;
+    img { 
+      height: 3rem;
+    }
+}
+
+.menu__tablist--tab { 
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: .35rem;
+  border-bottom: .1rem solid transparent;
+  transition: all .2s;
+
+  
+  &:hover {
+    border-bottom: .1rem solid #fff;
+    }
+  }
+
+  span { 
+    display: flex ;
+    align-items: center;
+    margin-right: 1rem;
+  }
 }
 `;

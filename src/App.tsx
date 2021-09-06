@@ -4,28 +4,70 @@ import { useState } from "react";
 //Styles
 import { GlobalStyle } from "./styles/global";
 
-//Components
-import { SearchInput } from "./components/SearchInput/index";
-import { CharactersContainer } from "./components/CharactersContainer/index";
+//Libs
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+
+//Pages
+import { Homepage } from "./components/Homepage/index";
+import { CharacterFinderPage } from "./components/CharacterFinderPage/index";
+import { FavoriteCharactersPage } from "./components/FavoriteCharactersPage/index";
 
 //Context
 import { FavoriteCharactersProvider } from "./contexts/Characters/FavoriteCharacters";
 
-export function App() {
-  const [searchedCharacter, setSearchedCharacter] = useState<string>("");
+//Assets
+import { HomeIcon, SearchIcon, FavoriteIcon } from "./icons/globalIcons";
+import logo from "./assets/logo.png";
 
-  function handleCharacterSearch(characterNameInput: string) {
-    setSearchedCharacter(characterNameInput);
+export function App() {
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  function handleTabSelect(index: number) {
+    setSelectedTab(index);
   }
 
   return (
     <>
       <GlobalStyle />
       <FavoriteCharactersProvider>
-        <h1>Characters Rick and Morty</h1>
-        <h2>Type a Character name to know more about it</h2>
-        <SearchInput onInputChange={handleCharacterSearch} />
-        <CharactersContainer searchedCharacter={searchedCharacter} />
+        <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
+          <TabList className="menu__tablist">
+            <picture>
+              <img src={logo} alt="rick and morty logo" />
+            </picture>
+            <Tab className="menu__tablist--tab">
+              <span>
+                <HomeIcon />
+              </span>
+              Home
+            </Tab>
+
+            <Tab className="menu__tablist--tab">
+              <span>
+                <SearchIcon />
+              </span>
+              Character Finder
+            </Tab>
+
+            <Tab className="menu__tablist--tab">
+              <span>
+                <FavoriteIcon />
+              </span>
+              Favorite Characters
+            </Tab>
+          </TabList>
+
+          <TabPanel>
+            <Homepage />
+          </TabPanel>
+
+          <TabPanel>
+            <CharacterFinderPage />
+          </TabPanel>
+          <TabPanel>
+            <FavoriteCharactersPage />
+          </TabPanel>
+        </Tabs>
       </FavoriteCharactersProvider>
     </>
   );

@@ -1,6 +1,9 @@
 //React
 import { useEffect, useState } from "react";
 
+//Styles
+import { CharactersListContainer } from "./styles";
+
 //Components
 import { Loading } from "../Loading/index";
 import { CharacterCard } from "../CharacterCard/index";
@@ -22,11 +25,14 @@ export function CharactersContainer({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const { handleFavoriteCharacters } = useFavoriteCharactersContext();
+  const { handleFavoriteCharacters, favoriteCharacters } =
+    useFavoriteCharactersContext();
 
   function handleFavoriteCharacter(char: ICharacter) {
     handleFavoriteCharacters(char);
   }
+
+  console.log(favoriteCharacters);
 
   useEffect(() => {
     async function getSearchedCharacter() {
@@ -50,20 +56,22 @@ export function CharactersContainer({
 
   if (isLoading) return <Loading />;
 
-  if (error) return <AlertMessage>this character does not exist</AlertMessage>;
+  if (error) return <AlertMessage>This character does not exist</AlertMessage>;
 
   return (
     <>
-      <ul>
-        {characters.map((char) => (
-          <li key={char.id}>
-            <CharacterCard
-              character={char}
-              onFavoriteCharacterClick={handleFavoriteCharacter}
-            />
-          </li>
-        ))}
-      </ul>
+      <CharactersListContainer>
+        <ul>
+          {characters.map((char) => (
+            <li key={char.id}>
+              <CharacterCard
+                character={char}
+                onFavoriteCharacterClick={handleFavoriteCharacter}
+              />
+            </li>
+          ))}
+        </ul>
+      </CharactersListContainer>
     </>
   );
 }

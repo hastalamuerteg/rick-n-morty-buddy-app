@@ -4,12 +4,18 @@ import ClipLoader from "react-spinners/ClipLoader";
 //React
 import { useState } from "react";
 
+//Styles
+import { LoadingContainer } from "./styles";
+
+//Helpers
+import { getRandomColor } from "../../helpers/functions";
+
 export function Loading() {
-  let [color, setColor] = useState("#81FF5C");
+  let [color] = useState(getRandomColor());
   return (
-    <>
-      <ClipLoader color={color} />
-      <div>fetching characters</div>
-    </>
+    <LoadingContainer>
+      <ClipLoader color={color} size={150} />
+      <span>Loading...</span>
+    </LoadingContainer>
   );
 }

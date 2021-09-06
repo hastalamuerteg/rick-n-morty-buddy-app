@@ -16,10 +16,10 @@ export interface ICharactersContainerProps {
 
 export interface ICharacterCardProps {
   character: ICharacter;
-  onFavoriteCharacterClick: (character: ICharacter) => void;
+  onFavoriteCharacterClick?: (character: ICharacter) => void;
 }
 
 export interface IFavoriteCharacterContext {
-  favoriteCharacters: ICharacter | ICharacter[];
+  favoriteCharacters: Array<ICharacter> | Array<ICharacter[]>;
   handleFavoriteCharacters: (char: ICharacter) => void;
 }
