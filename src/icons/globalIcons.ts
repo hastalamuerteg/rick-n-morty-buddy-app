@@ -5,4 +5,6 @@ import {
   MdFavorite as FavoriteIconFilled,
 } from "react-icons/md";
 
-export { HomeIcon, SearchIcon, FavoriteIcon, FavoriteIconFilled };
+import { AiOutlineDelete as BinIcon } from "react-icons/ai";
+
+export { HomeIcon, SearchIcon, FavoriteIcon, FavoriteIconFilled, BinIcon };

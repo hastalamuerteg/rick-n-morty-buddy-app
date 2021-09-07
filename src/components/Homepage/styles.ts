@@ -6,6 +6,7 @@ export const HomeContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  margin: 3rem 1rem;
 
   @media (max-width: 768px) {
     display: flex;
@@ -13,11 +14,12 @@ export const HomeContainer = styled.div`
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin: 1rem;
 
     @media (max-width: 768px) {
       text-align: center;
+      font-size: 2.5rem;
     }
   }
 

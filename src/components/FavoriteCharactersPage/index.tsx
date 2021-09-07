@@ -5,23 +5,38 @@ import { CharacterCard } from "../CharacterCard";
 import { FavoriteCharactersPageContainer } from "./styles";
 
 export function FavoriteCharactersPage() {
-  const { favoriteCharacters } = useFavoriteCharactersContext();
+  const {
+    favoriteCharacters,
+    handleAddFavoriteCharacter,
+    handleRemoveFavoriteCharacter,
+  } = useFavoriteCharactersContext();
 
   if (favoriteCharacters.length <= 0)
     return <AlertMessage>You have no favorite characters yet.</AlertMessage>;
+
+  function handleFavoriteCharacter(char: ICharacter) {
+    handleAddFavoriteCharacter(char);
+  }
+
+  function handleDeleteFavoriteCharacter(charId: number) {
+    handleRemoveFavoriteCharacter(charId);
+  }
 
   return (
     <FavoriteCharactersPageContainer>
       <h1>Favorite Characters</h1>
       <ul>
-        {favoriteCharacters &&
-          favoriteCharacters.map((character) => {
-            return (
-              <li key={character.id}>
-                <CharacterCard character={character as ICharacter} />
-              </li>
-            );
-          })}
+        {favoriteCharacters.map((char) => {
+          return (
+            <li key={char.id}>
+              <CharacterCard
+                character={char}
+                onFavoriteCharacterClick={handleFavoriteCharacter}
+                onDeleteFavoriteCharacterClick={handleDeleteFavoriteCharacter}
+              />
+            </li>
+          );
+        })}
       </ul>
     </FavoriteCharactersPageContainer>
   );

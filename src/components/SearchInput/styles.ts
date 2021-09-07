@@ -6,7 +6,7 @@ export const SearchInputContainer = styled.div`
 
   input {
     @media (max-width: 768px) {
-      width: 90%;
+      width: 85%;
       margin: 1rem;
     }
 

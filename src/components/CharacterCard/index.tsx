@@ -5,57 +5,64 @@ import { ICharacterCardProps } from "../../@Types/Characters";
 import { CharacterCardContainer } from "./styles";
 
 //Assets
-import { FavoriteIcon, FavoriteIconFilled } from "../../icons/globalIcons";
-import { useState } from "react";
+import { FavoriteIcon, BinIcon } from "../../icons/globalIcons";
 
 export function CharacterCard({
   character,
   onFavoriteCharacterClick,
+  onDeleteFavoriteCharacterClick,
 }: ICharacterCardProps) {
-  function handleCharacterCardClick() {
-    setIsFavorite(!isFavorite);
+  function handleFavoriteClick() {
+    console.log("clik");
+
     if (onFavoriteCharacterClick) {
       onFavoriteCharacterClick(character);
     }
   }
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  function handleDeleteClick() {
+    if (onDeleteFavoriteCharacterClick) {
+      onDeleteFavoriteCharacterClick(character.id);
+    }
+  }
 
   return (
-    <CharacterCardContainer>
-      <header>
-        <span onClick={handleCharacterCardClick}>
-          {isFavorite ? (
-            <FavoriteIconFilled size={25} />
-          ) : (
-            <FavoriteIcon size={25} />
-          )}
+    <>
+      <CharacterCardContainer>
+        <span className="bin__icon" onClick={handleDeleteClick}>
+          <BinIcon size={25} />
         </span>
-        <picture>
-          <img src={character.image} alt={character.name} />
-        </picture>
-      </header>
-      <div className="character__description">
-        <h2>{character.name}</h2>
-        <ul>
-          <li>
-            <strong>Species: </strong>
-            {character.species}
-          </li>
-          <li>
-            <strong>Status: </strong>
-            {character.status}
-          </li>
-          <li>
-            <strong>Gender: </strong>
-            {character.gender}
-          </li>
-          <li>
-            <strong>Location: </strong>
-            {character.location.name}
-          </li>
-        </ul>
-      </div>
-    </CharacterCardContainer>
+        <header>
+          <span className="favorite__icon" onClick={handleFavoriteClick}>
+            <FavoriteIcon size={25} />
+          </span>
+
+          <picture>
+            <img src={character.image} alt={character.name} />
+          </picture>
+        </header>
+        <div className="character__description">
+          <h2>{character.name}</h2>
+          <ul>
+            <li>
+              <strong>Species: </strong>
+              {character.species}
+            </li>
+            <li>
+              <strong>Status: </strong>
+              {character.status}
+            </li>
+            <li>
+              <strong>Gender: </strong>
+              {character.gender}
+            </li>
+            <li>
+              <strong>Location: </strong>
+              {character.location.name}
+            </li>
+          </ul>
+        </div>
+      </CharacterCardContainer>
+    </>
   );
 }

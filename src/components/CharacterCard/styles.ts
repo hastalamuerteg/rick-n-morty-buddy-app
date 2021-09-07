@@ -9,6 +9,15 @@ export const CharacterCardContainer = styled.div`
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   background: var(--shape);
   overflow: hidden;
+  position: relative;
+
+  .bin__icon {
+    top: 1rem;
+    left: 1rem;
+    z-index: 9999;
+    position: absolute;
+    cursor: pointer;
+  }
 
   header {
     display: flex;
@@ -19,7 +28,7 @@ export const CharacterCardContainer = styled.div`
     background: linear-gradient(to top left, var(--primary), var(--secondary));
     position: relative;
 
-    span {
+    .favorite__icon {
       position: absolute;
       top: 1rem;
       right: 1rem;

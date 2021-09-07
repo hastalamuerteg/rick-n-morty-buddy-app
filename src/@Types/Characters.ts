@@ -8,6 +8,7 @@ export interface ICharacter {
     name: string;
   };
   image: string;
+  isFavorite?: boolean;
 }
 
 export interface ICharactersContainerProps {
@@ -16,10 +17,12 @@ export interface ICharactersContainerProps {
 
 export interface ICharacterCardProps {
   character: ICharacter;
-  onFavoriteCharacterClick?: (character: ICharacter) => void;
+  onFavoriteCharacterClick: (character: ICharacter) => void;
+  onDeleteFavoriteCharacterClick: (charId: number) => void;
 }
 
 export interface IFavoriteCharacterContext {
-  favoriteCharacters: Array<ICharacter> | Array<ICharacter[]>;
-  handleFavoriteCharacters: (char: ICharacter) => void;
+  favoriteCharacters: ICharacter[];
+  handleAddFavoriteCharacter: (char: ICharacter) => void;
+  handleRemoveFavoriteCharacter: (charId: number) => void;
 }

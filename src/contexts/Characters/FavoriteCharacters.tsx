@@ -18,13 +18,32 @@ export function FavoriteCharactersProvider({
     []
   );
 
-  function handleFavoriteCharacters(char: ICharacter) {
-    setFavoriteCharacters([...favoriteCharacters, char]);
+  function handleAddFavoriteCharacter(char: ICharacter) {
+    const isCharacterFavorite = favoriteCharacters.find(
+      ({ id }) => id === char.id
+    );
+
+    isCharacterFavorite
+      ? console.log("already in")
+      : setFavoriteCharacters([
+          ...favoriteCharacters,
+          { ...char, isFavorite: true },
+        ]);
+  }
+
+  function handleRemoveFavoriteCharacter(charId: number) {
+    setFavoriteCharacters(
+      favoriteCharacters.filter((char) => char.id !== charId)
+    );
   }
 
   return (
     <FavoriteCharactersContext.Provider
-      value={{ favoriteCharacters, handleFavoriteCharacters }}
+      value={{
+        favoriteCharacters,
+        handleAddFavoriteCharacter,
+        handleRemoveFavoriteCharacter,
+      }}
     >
       {children}
     </FavoriteCharactersContext.Provider>

@@ -7,6 +7,7 @@ export const AlertMessageContainer = styled.div`
   align-items: center;
   padding: 1rem;
   text-align: center;
+  margin-top: 4rem;
 
   span {
     font-size: 3rem;

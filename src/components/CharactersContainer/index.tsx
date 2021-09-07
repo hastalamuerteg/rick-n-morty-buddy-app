@@ -25,11 +25,18 @@ export function CharactersContainer({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const { handleFavoriteCharacters, favoriteCharacters } =
-    useFavoriteCharactersContext();
+  const {
+    handleAddFavoriteCharacter,
+    handleRemoveFavoriteCharacter,
+    favoriteCharacters,
+  } = useFavoriteCharactersContext();
 
   function handleFavoriteCharacter(char: ICharacter) {
-    handleFavoriteCharacters(char);
+    handleAddFavoriteCharacter(char);
+  }
+
+  function handleDeleteFavoriteCharacter(charId: number) {
+    handleRemoveFavoriteCharacter(charId);
   }
 
   console.log(favoriteCharacters);
@@ -67,6 +74,7 @@ export function CharactersContainer({
               <CharacterCard
                 character={char}
                 onFavoriteCharacterClick={handleFavoriteCharacter}
+                onDeleteFavoriteCharacterClick={handleDeleteFavoriteCharacter}
               />
             </li>
           ))}
