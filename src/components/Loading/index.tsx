@@ -14,7 +14,7 @@ export function Loading() {
   let [color] = useState(getRandomColor());
   return (
     <LoadingContainer>
-      <ClipLoader color={color} size={150} />
+      <ClipLoader color={color} size={100} />
       <span>Loading...</span>
     </LoadingContainer>
   );

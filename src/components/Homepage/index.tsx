@@ -1,4 +1,7 @@
+//Styles
 import { HomeContainer } from "./styles";
+
+//Assets
 import rickImg from "../../assets/rick_morty.png";
 
 export function Homepage() {

@@ -1,7 +1,11 @@
 //Components
 import { SearchInput } from "../../components/SearchInput/index";
 import { CharactersContainer } from "../../components/CharactersContainer/index";
+
+//React
 import { useState } from "react";
+
+//Styles
 import { CharacterFinderPageContainer } from "./styles";
 
 export function CharacterFinderPage() {

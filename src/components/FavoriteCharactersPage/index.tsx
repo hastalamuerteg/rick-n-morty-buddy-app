@@ -1,7 +1,14 @@
+//Types
 import { ICharacter } from "../../@Types/Characters";
+
+//Hooks
 import { useFavoriteCharactersContext } from "../../hooks/Characters/UseFavoriteCharactersContext";
+
+//Components
 import { AlertMessage } from "../AlertMessage";
 import { CharacterCard } from "../CharacterCard";
+
+//Styles
 import { FavoriteCharactersPageContainer } from "./styles";
 
 export function FavoriteCharactersPage() {

@@ -14,7 +14,7 @@ export const CharacterCardContainer = styled.div`
   .bin__icon {
     top: 1rem;
     left: 1rem;
-    z-index: 9999;
+    z-index: 10;
     position: absolute;
     cursor: pointer;
   }
