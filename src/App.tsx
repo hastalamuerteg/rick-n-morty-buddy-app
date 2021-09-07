@@ -6,6 +6,7 @@ import { GlobalStyle } from "./styles/global";
 
 //Libs
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { ToastContainer } from "react-toastify";
 
 //Pages
 import { Homepage } from "./components/Homepage/index";
@@ -29,6 +30,7 @@ export function App() {
   return (
     <>
       <GlobalStyle />
+      <ToastContainer toastClassName="toast__className" />
       <FavoriteCharactersProvider>
         <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
           <TabList className="menu__tablist">

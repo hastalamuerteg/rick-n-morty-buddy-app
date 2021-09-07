@@ -25,11 +25,8 @@ export function CharactersContainer({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const {
-    handleAddFavoriteCharacter,
-    handleRemoveFavoriteCharacter,
-    favoriteCharacters,
-  } = useFavoriteCharactersContext();
+  const { handleAddFavoriteCharacter, handleRemoveFavoriteCharacter } =
+    useFavoriteCharactersContext();
 
   function handleFavoriteCharacter(char: ICharacter) {
     handleAddFavoriteCharacter(char);
@@ -38,8 +35,6 @@ export function CharactersContainer({
   function handleDeleteFavoriteCharacter(charId: number) {
     handleRemoveFavoriteCharacter(charId);
   }
-
-  console.log(favoriteCharacters);
 
   useEffect(() => {
     async function getSearchedCharacter() {

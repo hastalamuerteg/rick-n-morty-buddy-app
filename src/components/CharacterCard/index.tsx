@@ -13,8 +13,6 @@ export function CharacterCard({
   onDeleteFavoriteCharacterClick,
 }: ICharacterCardProps) {
   function handleFavoriteClick() {
-    console.log("clik");
-
     if (onFavoriteCharacterClick) {
       onFavoriteCharacterClick(character);
     }

@@ -38,6 +38,7 @@ body {
 body, input, textarea, button {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
+  font-size: 1rem;
 }
 
 h1,h2,h3,h4,h5,h6, strong {
@@ -116,5 +117,10 @@ a {
     align-items: center;
     margin-right: 1rem;
   }
+}
+
+.toast__className {
+  background: var(--shape);
+  color: #fff;
 }
 `;
